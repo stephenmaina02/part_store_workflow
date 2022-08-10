@@ -1,0 +1,10 @@
+.custom-input-width{
+    min-width: 120px;
+}
+.input-auto{
+    width:auto;
+}
+.theme{
+    background-color: purple !important;
+    color: white;
+}
