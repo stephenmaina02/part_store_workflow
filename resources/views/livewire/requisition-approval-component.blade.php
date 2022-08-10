@@ -67,9 +67,11 @@
                                 <td>
                                     @if (App\Services\ApproverService::checkPreviousApprover($req->requisition_id, $req->approval_level))
                                         <button class=" btn btn-sm btn-outline-secondary"
-                                            wire:click="openApprovalForm('{{ $req->requisition_id }}')"
-                                            data-toggle="modal" data-target="#requisitionApprovalModal"><i
-                                                class="fa fa-eye"></i>
+                                            wire:click="openApprovalForm('{{ $req->requisition_id }}')">
+                                            <span wire:target="openApprovalForm"
+                                                wire:loading.class="spinner-border spinner-border-sm" role="status"
+                                                aria-hidden="true"></span>
+                                            <i class="fa fa-eye"></i>
                                             View</button>
                                     @else
                                         <small>No action</small>

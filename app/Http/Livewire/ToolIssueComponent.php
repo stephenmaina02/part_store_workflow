@@ -52,6 +52,7 @@ class ToolIssueComponent extends Component
         $this->time_returned=$toolIssue->time_returned;
         $this->status=$toolIssue->status;
         $this->comment=$toolIssue->comment;
+        $this->emit('openToolIssueModal');
 
     }
     public function clearFields()

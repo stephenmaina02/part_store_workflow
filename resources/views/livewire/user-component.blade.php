@@ -71,8 +71,11 @@
                                 <td>{{ $user->approval_level == '' ? 0 : $user->approval_level }}</td>
                                 <td>{{ $user->user_must_change_password == 0 ? 'Yes' : 'No' }}</td>
                                 <td><button class=" btn btn-sm btn-outline-secondary" style="min-width: 70px"
-                                        data-toggle="modal" data-target="#userModal"
-                                        wire:click="openUserEditForm('{{ $user->id }}')"><i class="fa fa-edit"></i>
+                                        wire:click="openUserEditForm('{{ $user->id }}')">
+                                        <span wire:target="openUserEditForm"
+                                            wire:loading.class="spinner-border spinner-border-sm" role="status"
+                                            aria-hidden="true"></span>
+                                        <i class="fa fa-edit"></i>
                                         Edit</button>
                                 </td>
                             </tr>

@@ -74,8 +74,11 @@
                                 <td>{{ $tool->status == 1 ? 'Active' : 'Inactive' }}</td>
                                 <td>{{ $tool->value }}</td>
                                 <td><button class="btn btn-sm btn-outline-secondary" style="min-width: 70px"
-                                        data-toggle="modal" data-target="#toolsModal"
-                                        wire:click="openToolEditForm('{{ $tool->id }}')"><i class="fa fa-edit"></i>
+                                        wire:click="openToolEditForm('{{ $tool->id }}')">
+                                        <span wire:target="openToolEditForm"
+                                            wire:loading.class="spinner-border spinner-border-sm" role="status"
+                                            aria-hidden="true"></span>
+                                        <i class="fa fa-edit"></i>
                                         Edit</button></td>
                             </tr>
                         @empty
@@ -136,8 +139,8 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="value">Value</label>
-                            <input type="number" step="0.01" name="value" wire:model.defer="value" id="value"
-                                class="form-control text-uppercase">
+                            <input type="number" step="0.01" name="value" wire:model.defer="value"
+                                id="value" class="form-control text-uppercase">
                             @error('value')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

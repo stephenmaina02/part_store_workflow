@@ -78,9 +78,11 @@
                                 <td>
                                     <div class="d-flex justify-content-left">
                                         <button class=" btn btn-sm btn-outline-secondary mr-3"
-                                            wire:click="openRequisition('{{ $req->id }}')" data-toggle="modal"
-                                            data-target="#requisitionModal"><i
-                                                class="fa fa-eye"></i>
+                                            wire:click="openRequisition('{{ $req->id }}')" >
+                                            <span wire:target="openRequisition"
+                                                wire:loading.class="spinner-border spinner-border-sm" role="status"
+                                                aria-hidden="true"></span>
+                                            <i class="fa fa-eye"></i>
                                             View</button>
                                         <form action="{{ route('download-requisition-pdf') }}" method="POST">
                                             @csrf
@@ -152,9 +154,13 @@
                         </div>
                         @if ($requisition_id == '')
                             <div class="row mb-1">
-                                <div class="col-md-12">
+                                <div class="col-md-4">
                                     <button type="button" class="btn btn-sm btn-primary "
-                                        wire:click.prevent="addRequisition"><i class="fa fa-plus"></i> Add
+                                        wire:click="addRequisition">
+                                        <span wire:target="addRequisition"
+                                            wire:loading.class="spinner-border spinner-border-sm" role="status"
+                                            aria-hidden="true"></span>
+                                        <i class="fa fa-plus"></i> Add
                                         Item</button>
                                 </div>
                             </div>
@@ -195,11 +201,12 @@
                                                         wire:change="change('{{ $index }}')"
                                                         {{ $requisition_id != '' ? 'disabled' : '' }}>
                                                         <option value=""></option>
-                                                        @foreach ($items as $item)
+                                                        @forelse ($items as $item)
                                                             <option value="{{ $item->code }}">
                                                                 {{ $item->code . ' - ' . $item->description }}
                                                             </option>
-                                                        @endforeach
+                                                        @empty
+                                                        @endforelse
                                                     </select>
                                                 </td>
                                                 {{-- <td>
@@ -269,9 +276,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        {{-- @if ($sage_status == 1 ) --}}
-                            <button type="submit" class="btn btn-success btn-sm mr-2"><i class="fa fa-save"></i>
-                                Submit</button>
+                        {{-- @if ($sage_status == 1) --}}
+                        <button type="submit" class="btn btn-success btn-sm mr-2"><i class="fa fa-save"></i>
+                            Submit</button>
                         {{-- @endif --}}
                         <button type="button" class="btn btn-secondary btn-sm mr-2" data-dismiss="modal"><i
                                 class="fa fa-window-close"></i> Close</button>

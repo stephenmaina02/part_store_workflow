@@ -113,6 +113,10 @@
                 <form wire:submit.prevent="save">
                     <div class="modal-header">
                         <h5 class="modal-title" id="returnModalLabel">Return</h5>
+                        <div wire:loading wire:target="save">
+                            <span style="color: green; font-size: 13pt; font-weight: bold;">Creating
+                                Return...</span>
+                        </div>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -159,7 +163,11 @@
                                 @if ($return_id == '')
                                     <button type="button" class="btn btn-sm btn-primary "
                                         {{ $requisition_no == '' ? 'disabled' : '' }}
-                                        wire:click.prevent="addReturnLine"><i class="fa fa-plus"></i> Add
+                                        wire:click.prevent="addReturnLine">
+                                        <span wire:target="addReturnLine"
+                                            wire:loading.class="spinner-border spinner-border-sm" role="status"
+                                            aria-hidden="true"></span>
+                                        <i class="fa fa-plus"></i> Add
                                         Return Item</button>
                                 @endif
                             </div>
@@ -196,7 +204,7 @@
                                                         </select>
                                                     @else
                                                         <input type="text" class="form-control custom-input-width"
-                                                           value={{ $returnArray[$index]['item_cod'].' - '.$returnArray[$index]['description'] }}
+                                                            value={{ $returnArray[$index]['item_cod'] . ' - ' . $returnArray[$index]['description'] }}
                                                             disabled>
                                                     @endif
 

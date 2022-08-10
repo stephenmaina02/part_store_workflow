@@ -12,7 +12,7 @@
         window.livewire.on('closeRequisitionApprovalModal', () => {
             $('#requisitionApprovalModal').modal('hide');
         });
-        window.livewire.on('openRequisitionApprovalModal', () => {
+        window.livewire.on('openApprovalForm', () => {
             $('#requisitionApprovalModal').modal('show');
         });
         // window.livewire.on('loadDataTables', () => {

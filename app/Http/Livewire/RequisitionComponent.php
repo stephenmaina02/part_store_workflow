@@ -171,7 +171,7 @@ class RequisitionComponent extends Component
             ];
         }
         // $this->requested_by = $reqs->requested_by;
-        // $this->emit('openRequisitionModal');
+        $this->emit('openRequisitionModal');
     }
     public function render()
     {

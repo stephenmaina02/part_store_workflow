@@ -46,6 +46,7 @@ class RequisitionApprovalComponent extends Component
                 'is_returnable' => $reqline->is_returnable
             ];
         }
+        $this->emit('openApprovalForm');
     }
     public function submitApproval()
     {

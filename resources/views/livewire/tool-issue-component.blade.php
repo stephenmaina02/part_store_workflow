@@ -77,8 +77,11 @@
                                 <td>{{ $issue->status }}</td>
                                 <td>{{ $issue->comment }}</td>
                                 <td><button class="btn btn-sm btn-outline-secondary" style="min-width: 70px"
-                                    data-toggle="modal" data-target="#toolIssueModal"
-                                    wire:click="openToolIssueEditForm('{{ $issue->id }}')"><i class="fa fa-edit"></i>
+                                    wire:click="openToolIssueEditForm('{{ $issue->id }}')">
+                                    <span wire:target="openToolIssueEditForm"
+                                    wire:loading.class="spinner-border spinner-border-sm" role="status"
+                                    aria-hidden="true"></span>
+                                    <i class="fa fa-edit"></i>
                                     Edit</button></td>
                             </tr>
                         @empty

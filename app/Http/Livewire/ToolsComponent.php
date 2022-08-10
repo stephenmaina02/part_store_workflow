@@ -55,6 +55,8 @@ class ToolsComponent extends Component
         $this->tool_id = $tool->id;
         $this->description = $tool->description;
         $this->status = $tool->status;
+        $this->value=$tool->value;
+        $this->emit('openToolModal');
     }
     public function clearFields()
     {

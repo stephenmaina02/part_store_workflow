@@ -12,8 +12,8 @@
         window.livewire.on('closeToolModal', () => {
             $('#toolsModal').modal('hide');
         });
-        // window.livewire.on('openTaskTypeModel', () => {
-        //     $('#taskTypeModal').modal('show');
-        // });
+        window.livewire.on('openToolModal', () => {
+            $('#toolsModal').modal('show');
+        });
     </script>
 @endsection

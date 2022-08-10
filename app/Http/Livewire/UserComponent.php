@@ -39,6 +39,7 @@ class UserComponent extends Component
         $this->role = $user->is_admin;
         $this->is_approver = $user->is_approver;
         $this->approver_level = $user->approval_level;
+        $this->emit('openUserModal');
     }
     public function changeIsApprover()
     {
